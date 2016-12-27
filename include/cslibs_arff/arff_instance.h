@@ -12,6 +12,7 @@
 #include "arff_value.h"
 
 
+namespace cslibs_arff {
 /**
  * @class ArffInstance arff_instance.h
  * @brief Class to represent one single instance of data
@@ -58,7 +59,7 @@ private:
     /** instance data */
     std::vector<ArffValue::Ptr> m_data;
 }; 
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_INSTANCE_H__

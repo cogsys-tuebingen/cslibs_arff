@@ -10,6 +10,7 @@
 #include "arff_utils.h"
 
 
+namespace cslibs_arff {
 /**
  * @enum ArffTokenEnum
  * @brief Tokens in the ARFF file
@@ -92,7 +93,7 @@ public:
      * Note, this function is meaningful only if the token is of
      * 'numeric' type!
      */
-    int32 token_int32() const;
+    int32_t token_int32() const;
 
     /**
      * @brief token value as a 64b integer
@@ -101,7 +102,7 @@ public:
      * Note, this function is meaningful only if the token is of
      * 'numeric' type!
      */
-    int64 token_int64() const;
+    int64_t token_int64() const;
 
     /**
      * @brief token value as a float
@@ -128,7 +129,7 @@ private:
     /** enum */
     ArffTokenEnum m_enum;
 };
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_TOKEN_H__

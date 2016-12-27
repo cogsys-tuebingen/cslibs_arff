@@ -1,5 +1,7 @@
 #include <cslibs_arff/arff_instance.h>
 
+using namespace cslibs_arff;
+
 ArffInstance::ArffInstance(): m_data() {
 }
 

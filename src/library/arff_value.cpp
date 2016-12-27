@@ -1,7 +1,8 @@
 #include <cslibs_arff/arff_value.h>
 
+using namespace cslibs_arff;
 
-std::string arff_value_type_to_str(ArffValueEnum e) {
+std::string cslibs_arff::arff_value_type_to_str(ArffValueEnum e) {
     switch(e) {
     case INTEGER: return "INTEGER";
     case FLOAT:   return "FLOAT";
@@ -16,7 +17,7 @@ std::string arff_value_type_to_str(ArffValueEnum e) {
 
 
 
-ArffValue::ArffValue(const int32 i/*=0*/): m_int(i),
+ArffValue::ArffValue(const int32_t i/*=0*/): m_int(i),
                                      m_float(0.0),
                                      m_str(""),
                                      m_type(INTEGER),
@@ -71,12 +72,12 @@ ArffValueEnum ArffValue::type() const {
     return m_type;
 }
 
-void ArffValue::set(int32 i) {
+void ArffValue::set(const int32_t i) {
     m_type = INTEGER;
     m_int = i;
 }
 
-void ArffValue::set(float f) {
+void ArffValue::set(const float f) {
     m_type = FLOAT;
     m_float = f;
 }
@@ -94,12 +95,12 @@ bool ArffValue::missing() const {
     return m_missing;
 }
 
-ArffValue::operator int32() const {
+ArffValue::operator int32_t() const {
     switch(m_type) {
     case INTEGER:
         return m_int;
     case FLOAT:
-        return (int32)m_float;
+        return (int32_t)m_float;
     default:
         THROW("operator int32 cannot work on type '%s'!",
               arff_value_type_to_str(m_type).c_str());
@@ -123,7 +124,7 @@ ArffValue::operator float() const {
 ArffValue::operator std::string() const {
     switch(m_type) {
     case INTEGER:
-        return num2str<int32>(m_int);
+        return num2str<int32_t>(m_int);
     case FLOAT:
         return num2str<float>(m_float);
     case DATE:
@@ -153,7 +154,7 @@ bool ArffValue::operator ==(const ArffValue& right) const {
     }
 }
 
-bool ArffValue::operator ==(int32 right) const {
+bool ArffValue::operator ==(int32_t right) const {
     if(m_type != INTEGER) {
         return false;
     }
@@ -174,14 +175,14 @@ bool ArffValue::operator ==(const std::string& right) const {
     return m_str == right;
 }
 
-bool operator ==(int32 left, const ArffValue& right) {
+bool cslibs_arff::operator ==(int32_t left, const ArffValue& right) {
     return (right == left);
 }
 
-bool operator ==(float left, const ArffValue& right) {
+bool cslibs_arff::operator ==(float left, const ArffValue& right) {
     return (right == left);
 }
 
-bool operator ==(const std::string& left, const ArffValue& right) {
+bool cslibs_arff::operator ==(const std::string& left, const ArffValue& right) {
     return (right == left);
 }

@@ -13,6 +13,7 @@
 #include "arff_utils.h"
 
 
+namespace cslibs_arff {
 /**
  * @class ArffScanner arff_scanner.h
  * @brief Class responsible for reading the 'arff' file
@@ -56,13 +57,13 @@ public:
      * @brief Returns the current line position
      * @return current line
      */
-    int64 line() const;
+    int64_t line() const;
 
     /**
      * @brief Returns the current column position
      * @return current column
      */
-    int64 column() const;
+    int64_t column() const;
 
     /**
      * @brief Whether the file has reached end or not
@@ -95,9 +96,9 @@ private:
     /** file being read */
     std::string m_file;
     /** current line being read */
-    int64 m_line;
+    int64_t m_line;
     /** current position in the row being read */
-    int64 m_col;
+    int64_t m_col;
     /** current character read from the file */
     char m_char;
     /** previous character read from the file */
@@ -105,7 +106,7 @@ private:
     /** file pointer */
     FILE* m_fp;
 };
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_SCANNER_H__

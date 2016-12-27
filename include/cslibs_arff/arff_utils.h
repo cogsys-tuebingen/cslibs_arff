@@ -11,24 +11,21 @@
 #include <sstream>
 
 
-/** 32 bit integer */
-typedef long int    int32;
-/** 64 bit integer */
-typedef long long   int64;
 
 
+namespace cslibs_arff {
 /**
  * @brief Handy function to throw std::exception
  * @param file file where the error is occuring
  * @param line line where the error is occuring
  * @param fmt format of the error message (followed by the args)
  */
-void throw_ex(const char* file, int64 line, const char* fmt, ...);
+void throw_ex(const char* file, int64_t line, const char* fmt, ...);
 
 
 /** Handy macro to throw exceptions */
 #define THROW(fmt, ...)                                         \
-    throw_ex(__FILE__, (int64)__LINE__, fmt, ##__VA_ARGS__)
+    throw_ex(__FILE__, (int64_t)__LINE__, fmt, ##__VA_ARGS__)
 
 
 /**
@@ -77,7 +74,7 @@ char to_lower(char c);
  * @return true if the 2 strings match, else false
  */
 bool icompare(const std::string& str, const std::string& ref);
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_UTILS_H__

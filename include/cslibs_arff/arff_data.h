@@ -21,6 +21,7 @@ typedef std::vector<std::string> ArffNominal;
 typedef std::map<std::string, std::string> ArffDateFormat;
 
 
+namespace cslibs_arff {
 /**
  * @class ArffData arff_data.h
  * @brief Class to represent the data parsed from the ARFF files
@@ -151,7 +152,7 @@ private:
     /** instances */
     std::vector<ArffInstance::Ptr> m_instances;
 };
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_DATA_H__

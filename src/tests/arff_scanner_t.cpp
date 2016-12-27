@@ -2,6 +2,7 @@
 #include <gtest/gtest.h>
 #include <cslibs_arff/arff_scanner.h>
 
+using namespace cslibs_arff;
 
 TEST(arff_scanner, good_usage) {
     ArffScanner sc("cases/case1.arff");

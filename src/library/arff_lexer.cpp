@@ -1,6 +1,6 @@
 #include <cslibs_arff/arff_lexer.h>
 
-
+using namespace cslibs_arff;
 
 const char ArffLexer::SPACE   = ' ';
 const char ArffLexer::TAB     = '\t';
@@ -13,7 +13,7 @@ const char ArffLexer::COMMA   = ',';
 const char ArffLexer::MISS    = '?';
 
 
-ArffLexer::ArffLexer(const std::string& _file): m_scanner(NULL),
+ArffLexer::ArffLexer(const std::string& _file): m_scanner(nullptr),
                                                 m_b_close(false) {
     m_scanner.reset(new ArffScanner(_file));
 }

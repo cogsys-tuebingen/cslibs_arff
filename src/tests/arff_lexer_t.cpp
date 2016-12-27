@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <cslibs_arff/arff_lexer.h>
 
+using namespace cslibs_arff;
 
 #define TEST_ARFF(lex, e, s)                    \
     {                                           \

@@ -1,15 +1,16 @@
 #include <cslibs_arff/arff_scanner.h>
 
+using namespace cslibs_arff;
 
 const char ArffScanner::NEWLINE = '\n';
 
 
 ArffScanner::ArffScanner(const std::string& _file): m_file(_file),
-                                            m_line((int64)0),
-                                            m_col((int64)0),
+                                            m_line(0),
+                                            m_col(0),
                                             m_char(NEWLINE),
-                                            m_prev_char((char)0),
-                                            m_fp(NULL) {
+                                            m_prev_char(0),
+                                            m_fp(nullptr) {
     m_fp = fopen(m_file.c_str(), "r");
     if(m_fp == NULL) {
         THROW("ArffScanner: failed to open the file '%s'!", m_file.c_str());
@@ -51,11 +52,11 @@ char ArffScanner::previous() const {
     return m_prev_char;
 }
 
-int64 ArffScanner::line() const {
+int64_t ArffScanner::line() const {
     return m_line;
 }
 
-int64 ArffScanner::column() const {
+int64_t ArffScanner::column() const {
     return m_col;
 }
 
@@ -64,7 +65,7 @@ bool ArffScanner::eof() const {
 }
 
 std::string ArffScanner::err_msg(const std::string& msg) const {
-    std::string err = m_file + ":" + num2str<int64>(m_line);
-    err += ":" + num2str<int64>(m_col) + " " + msg;
+    std::string err = m_file + ":" + num2str<int64_t>(m_line);
+    err += ":" + num2str<int64_t>(m_col) + " " + msg;
     return err;
 }

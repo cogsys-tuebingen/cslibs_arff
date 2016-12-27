@@ -1,11 +1,11 @@
 #include <cslibs_arff/arff_parser.h>
 #include <cslibs_arff/arff_token.h>
 
+using namespace cslibs_arff;
 
-
-ArffParser::ArffParser(const std::string& _file) : m_lexer(NULL),
+ArffParser::ArffParser(const std::string& _file) : m_lexer(nullptr),
                                                    m_parsed(false),
-                                                   m_data(NULL) {
+                                                   m_data(nullptr) {
     m_lexer.reset(new ArffLexer(_file));
 }
 
@@ -112,10 +112,10 @@ void ArffParser::_read_attr() {
 
 void ArffParser::_read_instances() {
     bool end_of_file = false;
-    int32 num = m_data->num_attributes();
+    int32_t num = m_data->num_attributes();
     while(!end_of_file) {
         ArffInstance::Ptr inst(new ArffInstance());
-        for(int32 i=0;i<num;++i) {
+        for(int32_t i=0;i<num;++i) {
             ArffToken tok = m_lexer->next_token();
             ArffTokenEnum type = tok.token_enum();
             ArffValueEnum aType = m_data->get_attr(i)->type();

@@ -14,6 +14,7 @@
 #include "arff_token.h"
 
 
+namespace cslibs_arff {
 /**
  * @class ArffLexer arff_lexer.h
  * @brief Responsible for dividing the data inside 'arff' file into tokens
@@ -149,7 +150,7 @@ private:
     /** variable to catch for '}' occurences */
     bool m_b_close;
 };
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_LEXER_H__

@@ -11,6 +11,7 @@
 #include "arff_utils.h"
 
 
+namespace cslibs_arff {
 /**
  * @enum ArffValueEnum
  * @brief Types of data
@@ -52,7 +53,7 @@ public:
      * @brief Constructor for int data
      * @param i int value [0]
      */
-    ArffValue(const int32 i=0);
+    ArffValue(const int32_t i=0);
 
     /**
      * @brief Constructor for float data
@@ -93,13 +94,13 @@ public:
      * @brief Set the data to be stored
      * @param i integer value
      */
-    void set(int32 i);
+    void set(const int32_t i);
 
     /**
      * @brief Set the data to be stored
      * @param f float value
      */
-    void set(float f);
+    void set(const float f);
 
     /**
      * @brief Set the data to be stored
@@ -124,7 +125,7 @@ public:
      * @brief Get the integer value
      * @return int value
      */
-    operator int32() const;
+    operator int32_t() const;
 
     /**
      * @brief Get the float value
@@ -148,7 +149,7 @@ public:
      * @brief Equality operator
      * @param right RHS
      */
-    bool operator ==(int32 right) const;
+    bool operator ==(int32_t right) const;
 
     /**
      * @brief Equality operator
@@ -167,7 +168,7 @@ public:
      * @param left LHS
      * @param right RHS
      */
-    friend bool operator ==(int32 left, const ArffValue& right);
+    friend bool operator ==(int32_t left, const ArffValue& right);
 
     /**
      * @brief LHS equality operator
@@ -186,7 +187,7 @@ public:
 
 private:
     /** integer value */
-    int32 m_int;
+    int32_t m_int;
     /** float value */
     float m_float;
     /** string value */
@@ -196,7 +197,7 @@ private:
     /** value missing or not */
     bool m_missing;
 };
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_VALUE_H__

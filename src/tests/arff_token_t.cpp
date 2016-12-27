@@ -2,6 +2,8 @@
 #include <gtest/gtest.h>
 #include <cslibs_arff/arff_token.h>
 
+using namespace cslibs_arff;
+
 TEST(arff_token, arff_token2str) {
     EXPECT_EQ("RELATION", arff_token2str(RELATION));
     EXPECT_EQ("ATTRIBUTE", arff_token2str(ATTRIBUTE));

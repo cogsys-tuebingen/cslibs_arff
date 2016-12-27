@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <cslibs_arff/arff_utils.h>
 
-
+using namespace cslibs_arff;
 
 TEST(arff_utils, throw_ex) {
     EXPECT_THROW(throw_ex("file", 1, "error!"), std::runtime_error);

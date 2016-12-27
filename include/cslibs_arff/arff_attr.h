@@ -10,7 +10,7 @@
 
 #include "arff_value.h"
 
-
+namespace cslibs_arff {
 /**
  * @class ArffAttr arff_attr.h
  * @brief Class to represent an ARFF attribute
@@ -50,7 +50,7 @@ private:
     /** attribute type */
     ArffValueEnum m_enum;
 };
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_ATTR_H__

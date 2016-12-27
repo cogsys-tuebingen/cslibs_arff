@@ -11,6 +11,7 @@
 #include "arff_data.h"
 
 
+namespace cslibs_arff {
 /**
  * @class ArffParser arff_parser.h
  * @brief Main class for parsing ARFF files
@@ -66,7 +67,7 @@ private:
     /** the data parsed from the ARFF file */
     ArffData::Ptr m_data;
 };
-
+}
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
 #endif // __INCLUDED_ARFF_PARSER_H__

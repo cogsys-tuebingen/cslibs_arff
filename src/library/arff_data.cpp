@@ -1,6 +1,6 @@
 #include <cslibs_arff/arff_data.h>
 
-
+using namespace cslibs_arff;
 
 ArffData::ArffData(): m_rel(""),
                       m_nominals(),
@@ -79,7 +79,7 @@ void ArffData::_cross_check_instance(const ArffInstance::Ptr &inst) {
         THROW("%s: instance size and num-attrs mismatch inst=%d attrs=%d",
               "ArffData", inst->size(), m_attrs.size());
     }
-    for(int32 i=0;i<m_attrs.size();++i) {
+    for(int32_t i=0;i<m_attrs.size();++i) {
         ArffValue::Ptr val = inst->get(i);
         ArffAttr::Ptr attr = m_attrs[i];
         ArffValueEnum valType = val->type();

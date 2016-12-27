@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <cslibs_arff/arff_data.h>
 
-
+using namespace cslibs_arff;
 
 TEST(arff_data, usage) {
     ArffData data;
@@ -30,14 +30,14 @@ TEST(arff_data, usage) {
     // instances
     EXPECT_EQ(0, data.num_instances());
     ArffInstance::Ptr ins1(new ArffInstance());
-    ins1->add(std::make_shared<ArffValue>(ArffValue((int32)10)));
+    ins1->add(std::make_shared<ArffValue>(ArffValue((int32_t)10)));
     ins1->add(std::make_shared<ArffValue>(ArffValue("string")));
     ins1->add(std::make_shared<ArffValue>(ArffValue("n3")));
     data.add_instance(ins1);
     EXPECT_EQ(1, data.num_instances());
     EXPECT_FALSE(!data.get_instance(0));
     ArffInstance::Ptr bad1(new ArffInstance());
-    bad1->add(std::make_shared<ArffValue>(ArffValue((int32)11)));
+    bad1->add(std::make_shared<ArffValue>(ArffValue((int32_t)11)));
     bad1->add(std::make_shared<ArffValue>(ArffValue("string1")));
     bad1->add(std::make_shared<ArffValue>(ArffValue("not-exist")));
     EXPECT_THROW(data.add_instance(bad1), std::runtime_error);

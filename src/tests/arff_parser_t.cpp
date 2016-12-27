@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <cslibs_arff/arff_parser.h>
 
-
+using namespace cslibs_arff;
 
 TEST(arff_parser, usage) {
     ArffParser parser("cases/case3.arff");

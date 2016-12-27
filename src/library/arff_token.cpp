@@ -1,8 +1,8 @@
 #include <cslibs_arff/arff_token.h>
 
+using namespace cslibs_arff;
 
-
-std::string arff_token2str(ArffTokenEnum type) {
+std::string cslibs_arff::arff_token2str(ArffTokenEnum type) {
     switch(type) {
     case RELATION:      return "RELATION";
     case ATTRIBUTE:     return "ATTRIBUTE";
@@ -40,17 +40,17 @@ ArffTokenEnum ArffToken::token_enum() const {
     return m_enum;
 }
 
-int32 ArffToken::token_int32() const {
-    return (int32)token_int64();
+int32_t ArffToken::token_int32() const {
+    return (int32_t)token_int64();
 }
 
-int64 ArffToken::token_int64() const {
+int64_t ArffToken::token_int64() const {
     if(m_enum != VALUE_TOKEN) {
         THROW("ArffToken::token_int64 token is not '%s', it's '%s'!",
               "VALUE_TOKEN", arff_token2str(m_enum).c_str());
     }
-    int64 num;
-    str2num<int64>(m_str, num);
+    int64_t num;
+    str2num<int64_t>(m_str, num);
     return num;
 }
 
