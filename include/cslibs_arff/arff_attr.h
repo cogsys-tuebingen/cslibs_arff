@@ -43,7 +43,6 @@ public:
      */
     ArffValueEnum type() const;
 
-
 private:
     /** attribute name */
     std::string m_name;

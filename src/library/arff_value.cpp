@@ -175,6 +175,19 @@ bool ArffValue::operator ==(const std::string& right) const {
     return m_str == right;
 }
 
+std::string ArffValue::to_string() const
+{
+    switch(m_type) {
+    case INTEGER:
+        return std::to_string(m_int);
+        break;
+    case FLOAT:
+        return std::to_string(m_float);
+    default:
+        return m_str;
+    }
+}
+
 bool cslibs_arff::operator ==(int32_t left, const ArffValue& right) {
     return (right == left);
 }

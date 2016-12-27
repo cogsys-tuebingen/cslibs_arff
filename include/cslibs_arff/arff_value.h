@@ -184,6 +184,7 @@ public:
      */
     friend bool operator ==(const std::string& left, const ArffValue& right);
 
+    std::string to_string() const;
 
 private:
     /** integer value */

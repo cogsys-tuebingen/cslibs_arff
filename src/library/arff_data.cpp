@@ -1,12 +1,15 @@
 #include <cslibs_arff/arff_data.h>
 
+#include <fstream>
+#include <stdexcept>
+
 using namespace cslibs_arff;
 
 ArffData::ArffData(): m_rel(""),
-                      m_nominals(),
-                      m_formats(),
-                      m_attrs(),
-                      m_instances() {
+    m_nominals(),
+    m_formats(),
+    m_attrs(),
+    m_instances() {
 }
 
 ArffData::~ArffData() {
@@ -127,3 +130,45 @@ void ArffData::_cross_check_instance(const ArffInstance::Ptr &inst) {
 }
 
 ///@todo: implement the method write_arff
+
+void ArffData::write_arff(const std::string &path)
+{
+    std::ofstream out(path);
+    if(!out.is_open())
+        throw std::runtime_error("Cannot open path '" + path + "'!");
+
+    out << "@relation " << m_rel << std::endl;
+
+    for(auto &a : m_attrs) {
+        out << "@attribute " + a->name() << " ";
+        if(a->type() == NOMINAL) {
+            auto nominals = m_nominals[a->name()];
+            if(nominals.size() > 0) {
+                out << "{";
+                for(std::size_t i = 0 ; i < nominals.size() - 1 ; ++i) {
+                    out << nominals[i] << ", ";
+                }
+                out << nominals.back();
+                out << "}";
+            }
+        } else {
+            out << arff_value_type_to_str(a->type());
+        }
+        out << std::endl;
+    }
+
+    out << "@data" << std::endl;
+    for(auto &inst : m_instances) {
+        const std::size_t inst_size = inst->size();
+        if(inst_size > 0) {
+            for(std::size_t i = 0 ; i < inst_size - 1 ; ++i) {
+                out << inst->get(i)->to_string() << ",";
+            }
+            out << inst->get(inst_size - 1)->to_string();
+            out << std::endl;
+        }
+    }
+    out.close();
+}
+
+
