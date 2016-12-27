@@ -137,10 +137,10 @@ void ArffData::write_arff(const std::string &path)
     if(!out.is_open())
         throw std::runtime_error("Cannot open path '" + path + "'!");
 
-    out << "@relation " << m_rel << std::endl;
+    out << "@RELATION " << m_rel << std::endl;
 
     for(auto &a : m_attrs) {
-        out << "@attribute " + a->name() << " ";
+        out << "@ATTRIBUTE " + a->name() << " ";
         if(a->type() == NOMINAL) {
             auto nominals = m_nominals[a->name()];
             if(nominals.size() > 0) {
@@ -157,7 +157,7 @@ void ArffData::write_arff(const std::string &path)
         out << std::endl;
     }
 
-    out << "@data" << std::endl;
+    out << "@DATA" << std::endl;
     for(auto &inst : m_instances) {
         const std::size_t inst_size = inst->size();
         if(inst_size > 0) {
