@@ -5,7 +5,7 @@
 using namespace cslibs_arff;
 
 #define STR_LENGTH 2048
-void cslibs_arff::throw_ex(const char* file, int64_t line, const char* fmt, ...) {
+void cslibs_arff::throw_ex(const char* file, int64_t line, const char* fmt...) {
     char msg[STR_LENGTH];
     va_list va;
     va_start(va, fmt);
