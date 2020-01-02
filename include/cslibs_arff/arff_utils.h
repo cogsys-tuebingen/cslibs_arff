@@ -20,13 +20,11 @@ namespace cslibs_arff {
  * @param line line where the error is occuring
  * @param fmt format of the error message (followed by the args)
  */
-void throw_ex(const char* file, int64_t line, const char* fmt, ...);
+void throw_ex(const char* file, int64_t line, const char* fmt...);
 
 
 /** Handy macro to throw exceptions */
-#define THROW(fmt, ...)                                         \
-    throw_ex(__FILE__, (int64_t)__LINE__, fmt, ##__VA_ARGS__)
-
+#define THROW(...) throw_ex(__FILE__, (int64_t)__LINE__, __VA_ARGS__)
 
 /**
  * @brief Converts a number to string
