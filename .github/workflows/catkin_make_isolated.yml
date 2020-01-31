@@ -1,0 +1,58 @@
+name: catkin_make_isolated
+
+on: [push]
+
+jobs:
+  build-16-melodic:
+    runs-on: [ubuntu-16.04]
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: ["-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_BUILD_TYPE=Release"]
+        compiler: ["-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++", "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"]
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        path: ws/src/csapex/src/cslibs_arff
+    - uses: betwo/github-setup-catkin@v1.0.0
+      with:
+        ros-version: 'kinetic'
+        workspace: $HOME/work/cslibs_arff/ws
+    - name: install_compiler
+      run: sudo apt-get install -y gcc clang
+    - name: build
+      run: |
+        cd $HOME/work/cslibs_arff/ws
+        catkin_make_isolated ${{ matrix.build_type }} ${{ matrix.compiler }}
+    - name: test
+      run: |
+        cd $HOME/work/cslibs_arff/ws
+        catkin_make_isolated --make-args test
+    
+
+  build-18-melodic:
+    runs-on: [ubuntu-18.04]
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: ["-DCMAKE_BUILD_TYPE=Debug", "-DCMAKE_BUILD_TYPE=Release"]
+        compiler: ["-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++", "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"]
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        path: ws/src/csapex/src/cslibs_arff
+    - uses: betwo/github-setup-catkin@v1.0.0
+      with:
+        ros-version: 'melodic'
+        workspace: $HOME/work/cslibs_arff/ws
+    - name: install_compiler
+      run: sudo apt-get install -y gcc clang
+    - name: build
+      run: |
+        cd $HOME/work/cslibs_arff/ws
+        catkin_make_isolated ${{ matrix.build_type }} ${{ matrix.compiler }}
+    - name: test
+      run: |
+        cd $HOME/work/cslibs_arff/ws
+        catkin_make_isolated --make-args test
+      

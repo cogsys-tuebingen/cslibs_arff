@@ -32,8 +32,8 @@ TEST(arff_value, usage_default) {
     // explicitly string
     val.set("string");
     EXPECT_EQ(STRING, val.type());
-    EXPECT_THROW((int32_t)val, std::runtime_error);
-    EXPECT_THROW((float)val, std::runtime_error);
+    EXPECT_THROW((void) (int32_t)val, std::runtime_error);
+    EXPECT_THROW((void) (float)val, std::runtime_error);
     EXPECT_EQ("string", (std::string)val);
     EXPECT_FALSE(val.missing());
     // explicitly int
@@ -75,8 +75,8 @@ TEST(arff_value, usage_string) {
     ArffValue val("string");
     // string (default)
     EXPECT_EQ(STRING, val.type());
-    EXPECT_THROW((int32_t)val, std::runtime_error);
-    EXPECT_THROW((float)val, std::runtime_error);
+    EXPECT_THROW((void) (int32_t)val, std::runtime_error);
+    EXPECT_THROW((void) (float)val, std::runtime_error);
     EXPECT_EQ("string", (std::string)val);
     EXPECT_FALSE(val.missing());
 

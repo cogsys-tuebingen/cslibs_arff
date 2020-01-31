@@ -64,6 +64,10 @@ if(${CSLIBS_ARFF_BUILD_TESTS})
                   "${TEST_SRCS}"
                   "${PROJECT_NAME}"
                    ${CMAKE_CURRENT_LIST_DIR})
+    target_compile_definitions(${PROJECT_NAME}_tests
+        PRIVATE
+            -DTEST_DIRECTORY="${CMAKE_CURRENT_LIST_DIR}/src/tests"
+    )
 
 endif()
 
