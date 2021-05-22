@@ -163,27 +163,6 @@ public:
      */
     bool operator ==(const std::string& right) const;
 
-    /**
-     * @brief LHS equality operator
-     * @param left LHS
-     * @param right RHS
-     */
-    friend bool operator ==(int32_t left, const ArffValue& right);
-
-    /**
-     * @brief LHS equality operator
-     * @param left LHS
-     * @param right RHS
-     */
-    friend bool operator ==(float left, const ArffValue& right);
-
-    /**
-     * @brief LHS equality operator
-     * @param left LHS
-     * @param right RHS
-     */
-    friend bool operator ==(const std::string& left, const ArffValue& right);
-
     std::string to_string() const;
 
 private:
@@ -198,6 +177,28 @@ private:
     /** value missing or not */
     bool m_missing;
 };
+
+
+/**
+ * @brief LHS equality operator
+ * @param left LHS
+ * @param right RHS
+ */
+bool operator ==(int32_t left, const ArffValue& right);
+
+/**
+ * @brief LHS equality operator
+ * @param left LHS
+ * @param right RHS
+ */
+bool operator ==(float left, const ArffValue& right);
+
+/**
+ * @brief LHS equality operator
+ * @param left LHS
+ * @param right RHS
+ */
+bool operator ==(const std::string& left, const ArffValue& right);
 }
 
 /* DO NOT WRITE ANYTHING BELOW THIS LINE!!! */
